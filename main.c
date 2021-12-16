@@ -49,8 +49,7 @@ void dijkstra_compute(struct TGAdjacencyMatrix *mtx, int *routeLengths, int *esc
         visited[minNode] = 1;
 
         for (int j = 0; j < mtx->node_count; ++j)
-            if (!visited[j] && matrix[minNode][j] && routeLengths[minNode] < INT_MAX &&
-                routeLengths[minNode] + matrix[minNode][j] < routeLengths[j]) {
+            if (matrix[minNode][j] && routeLengths[minNode] + matrix[minNode][j] < routeLengths[j]) {
                 routeLengths[j] = routeLengths[minNode] + matrix[minNode][j];
                 escapeRoutes[j] = minNode;
             }
